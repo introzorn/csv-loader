@@ -42,17 +42,90 @@ header {
 main {
     width: 100%;
     min-height: calc(100vh - 150px);
-    background-color: black;
-
+    background-color: rgba(240, 240, 240, 0);
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+    align-content: stretch;
+    font-size: 19px;
 }
 
 
 
-#animhead{
+#animhead {
     background-color: black;
     position: fixed;
     display: block;
     width: 100vw;
     height: 100vh;
     z-index: 0;
+}
+
+
+.download-panel {
+    padding: 50px;
+    margin: 100px;
+    background-color: rgba(255, 255, 255, 0.897);
+    border: 5px solid rgba(0, 0, 0, 0.418);
+    border-radius: 5px;
+    font-size: 15pt;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.download-panel h1 {
+    font-size: 23pt;
+}
+
+
+.download-button{
+    padding:10px 30px ;
+    background-color: crimson;
+    border-radius: 5px;
+    border: 2px solid brown;
+    box-shadow: 0 0 5px black;
+    margin: 30px;
+    color: white;
+    text-shadow: 0 0 5px black;
+    display: inline-block;
+    font-size: 20pt;
+    margin-left: auto;
+    margin-right: auto;
+}
+.download-button svg{
+    float: left;
+    display: block;
+}
+
+
+
+.download-button input[type=file] {
+    font-size: 45px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    -ms-filter: "alpha(opacity=0)";
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+}
+
+.download-button span{
+    text-align: center;
+    vertical-align: middle;
+}
+.download-button small{
+    display: block;
+    font-size: 10pt;
+    opacity: 0.5;
+    text-align: center;
 }

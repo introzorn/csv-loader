@@ -185,7 +185,7 @@ function rndCol() {
   // var b = Math.floor(Math.random() * 200);
   //return "rgb(" + r + "," + g + "," + b + ")";
 	var n=rng(0,cc.length-1);
-  console.log(cc[n]);
+
 	return cc[n];
 
 }
