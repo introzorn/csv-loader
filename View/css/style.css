@@ -1,0 +1,58 @@
+html,
+body {
+    overflow-x: hidden;
+    background-color: black;
+    z-index: 1;
+}
+
+header {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: block;
+    height: 100px;
+    width: 100%
+}
+
+.maintext {
+    text-shadow: 0 0 4px black, 0 0 10px black;
+    color: white;
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    left: 50px;
+    margin: auto;
+    font-size: 40pt
+}
+
+.headbtn {
+    color: white;
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    right: 20px;
+    margin: auto;
+    font-size: 10pt;
+    width: max-content;
+}
+
+main {
+    width: 100%;
+    min-height: calc(100vh - 150px);
+    background-color: black;
+
+}
+
+
+
+#animhead{
+    background-color: black;
+    position: fixed;
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
