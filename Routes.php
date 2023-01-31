@@ -30,11 +30,10 @@ namespace App {
      * Главная страница
      */
     Router::get("/", "Main->Index");
+    Router::post("/", "Main->Put");
 
 
-
-    Router::get("/gallery/[group]", "Gallery->Index");
-    Router::post("/gallery/[group]", "Gallery->Index");
+   
 
 
     /**

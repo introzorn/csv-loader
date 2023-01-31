@@ -3,6 +3,7 @@
 namespace App\Models;
 use App;
 use App\Model as M;
+use App\Contracts\CSV_Parser;
 class csv_files extends App\Model{
     // public $CHARSET='utf8mb4'; 
     // public $COLLATE='unicode_ci';
@@ -14,11 +15,29 @@ class csv_files extends App\Model{
         'id' => 'int(11) NOT NULL AUTO_INCREMENT',
         'slug' => 'char(255) NOT NULL',
         'name' => 'char(255) NOT NULL',
-        'description' => 'text(1080) NOT NULL',
+        'description' => 'text(1080)',
         'PRIMARY KEY'=>'id',
         'CHARSET'=>'utf8'];
     }
 
+
+    public function addCSV($file){
+
+        $scv= new CSV_Parser();
+        if( $scv->load($file["tmp_name"])===false){return false;}
+
+        $scv->parse(function($csv_asoc){echo("<pre>");var_dump($csv_asoc);echo("</pre>");});
+
+die();
+
+        $id=$this->add(["name"=>$file["name"],"slug"=>""]);
+        $this->edit($id,["slug"=>dechex($id)]);
+
+      
+
+
+        return true;
+    }
 
 
 }

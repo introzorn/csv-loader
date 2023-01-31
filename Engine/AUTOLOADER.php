@@ -6,6 +6,7 @@ spl_autoload_register(function ($class_name) {
 		$path="Engine\\";
 		if(strpos($class_name,"App\\Controllers")===0){$path="";}
 		if(strpos($class_name,"App\\Models")===0){$path="";}
+		if(strpos($class_name,"App\\Contracts")===0){$path="";}
 		
 		$class_name= str_replace("\\","/",str_replace("App\\",$path,$class_name));
 
