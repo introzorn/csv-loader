@@ -48,7 +48,10 @@ function anim() {
 anim();
 
 function draw() {
-	
+
+
+if(window.scrollY>window.innerHeight+100){ return}
+
 	var w  = window.innerWidth;
 var h  = window.innerHeight;
 var _w = w * 0.5;

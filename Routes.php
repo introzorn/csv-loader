@@ -32,9 +32,9 @@ namespace App {
     Router::get("/", "Main->Index");
     Router::post("/", "Main->Put");
 
-
+    Router::get("/csv_[slug]", "Main->Show");
    
-
+    Router::get("/download_[slug]", "Main->Download");
 
     /**
      * Заглушка для страницы 404 со вьюшкой

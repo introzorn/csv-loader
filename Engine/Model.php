@@ -64,7 +64,7 @@ class Model
                 $db=self::$connection;
             }else{
                 
-                $options = [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.$this->CHARSET.$this->ifCOLLATE];
+                $options = [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES '.$this->CHARSET.$this->ifCOLLATE, PDO::MYSQL_ATTR_LOCAL_INFILE => true];
 
              
                  $db = new PDO("mysql:host=" . DB_HOSTNAME . ":" . DB_PORT . ";dbname=" . DB_DATABASE . ";charset=".$this->CHARSET.';', DB_USERNAME, DB_PASSWORD,$options);
@@ -225,8 +225,13 @@ class Model
     public function find($id) //поиск элемента
     {
         try {
-            $req = self::$connection->prepare("SELECT * FROM " . $this->DB_TABLE . " WHERE id=:id");
-            $req->execute(['id' => $id]);
+           $param = ['id' => $id];
+           if(gettype($id)==="array"){
+                $param = $id;
+            }
+            $key = array_keys($param)[0];
+            $req = self::$connection->prepare("SELECT * FROM " . $this->DB_TABLE . " WHERE $key=:$key");
+            $req->execute($param);
             $ret = $req->fetch(PDO::FETCH_ASSOC);
             if (!$ret) {
                 return false;

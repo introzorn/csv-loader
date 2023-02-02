@@ -16,10 +16,16 @@ $T = function (callback, delay = 1, $arg = null) {
 window.addEventListener("DOMContentLoaded", function () {
 
     init();
-
+    init2();
 });
 
 function init() {
+
+
+
+    if (!!$(".csvfile-grid")) { return; }
+
+
     window.addEventListener('dragenter', function (e) {
         e.stopPropagation();
         e.preventDefault();
@@ -42,9 +48,9 @@ function init() {
 
         $(".download-button input[type=file]").files = dT.files;
 
-       $(".download-button small").innerHTML = e.dataTransfer.files[0].name;
-       
-       csvDownload();
+        $(".download-button small").innerHTML = e.dataTransfer.files[0].name;
+
+        csvDownload();
     }, false);
 
 
@@ -52,14 +58,49 @@ function init() {
         e.stopPropagation();
         e.preventDefault();
     });
+
+
     $(".download-button input[type=file]").addEventListener('change', function (e) {
         $(".download-button small").innerHTML = e.target.files[0].name;
         csvDownload();
     });
+
+
+
+
+}
+
+function init2() {
+
+    if (!!!$(".csvfile-grid")) { return }
+
+    window.addEventListener('resize', function (e) {
+
+
+        $h = $(".csvfile-panel").clientHeight;
+        $(".csvfile-grid").style.setProperty("margin-top", ($h + 120) + "px");
+   
+
+    })
+
+window.dispatchEvent(new Event("resize"));
+$("html").style.setProperty("overflow-x","visible");
+$("body").style.setProperty("overflow-x","visible");
+
+    $(".first-row-check").addEventListener('change', function (e) {
+        if(e.target.checked){
+            $(".first-row").classList.add("styck");
+        }else{
+            $(".first-row").classList.remove("styck");
+        }
+    });
+
+
 }
 
 
 
-function csvDownload(){
- $("form").submit();
+
+function csvDownload() {
+    $("form").submit();
 }

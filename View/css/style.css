@@ -85,8 +85,8 @@ main {
 }
 
 
-.download-button{
-    padding:10px 30px ;
+.download-button {
+    padding: 10px 30px;
     background-color: crimson;
     border-radius: 5px;
     border: 2px solid brown;
@@ -99,7 +99,8 @@ main {
     margin-left: auto;
     margin-right: auto;
 }
-.download-button svg{
+
+.download-button svg {
     float: left;
     display: block;
 }
@@ -119,13 +120,171 @@ main {
     -moz-opacity: 0;
 }
 
-.download-button span{
+.download-button span {
     text-align: center;
     vertical-align: middle;
 }
-.download-button small{
+
+.download-button small {
     display: block;
     font-size: 10pt;
     opacity: 0.5;
     text-align: center;
+}
+
+
+.csv-files-h1{
+    font-size: 20pt;
+    color: white;
+}
+
+.csv-files-vkladka{
+    text-decoration: none;
+    background-color: rgb(255, 255, 255) ;
+    transition: all 0.3s;
+    color:rgb(85, 0, 0);
+    display:block;
+    margin:20px 50px;
+    padding:10px ;
+    border-radius: 10px;
+
+}
+.csv-files-vkladka:hover{
+    
+    background-color: rgb(255, 0, 0) ;
+    color:rgb(255, 255, 255);
+    transform: scale(1.1);
+}
+
+
+
+
+.csvfile-panel {
+    padding: 25px;
+    margin: 50px;
+    background-color: rgba(255, 255, 255, 0.897);
+    border: 5px solid rgba(0, 0, 0, 0.418);
+    border-radius: 5px;
+    font-size: 15pt;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    box-sizing: border-box;
+}
+
+
+.csvfile-panel>svg {
+    width: 64px;
+    height: 64px;
+}
+
+.csvfile-panel>div {
+    flex-grow: 0;
+}
+.csvfile-panel a {
+    display: inline-block;
+   text-decoration: none;
+   color: crimson;
+   transition: all 0.3s;
+}
+.csvfile-panel a:hover {
+
+    color: rgb(255, 0, 51);
+    transform: scale(1.1);
+}
+
+
+.csvfile-grid {
+
+    overflow-x: visible;
+
+    padding: 0px;
+
+
+    font-size: 9pt;
+    color: white;
+    z-index: 4;
+}
+
+.csvfile-grid table {
+    position: relative;
+
+    background-color: rgb(92, 92, 92);
+    border: 5px solid rgba(0, 0, 0, 0.966);
+    border-radius: 5px;
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0;
+   
+}
+
+.csvfile-grid table th {
+     border: 1px solid rgb(17, 17, 17);
+    /* background-color: gainsboro; */
+    color: black;
+    font-size: 15pt;
+    text-align: center;
+    padding: 10px 5px;
+    margin: 0;
+}
+.csvfile-grid table thead {
+    background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
+}
+
+
+
+.csvfile-grid table tbody{
+    position: relative;
+}
+
+.styck {
+    position: sticky;
+    top: 53px;
+    background-color: rgb(92, 92, 92);
+    box-shadow: 0 0 10px black;
+
+}
+.csvfile-grid table tr {
+    padding: 0;
+    margin: 0;
+}
+
+.csvfile-grid table td {
+    border: 1px solid grey;
+    margin: 0;
+    padding: 5px;
+    vertical-align: top;
+}
+
+.goto-btn{
+    padding: 10px 30px;
+    background-color: crimson;
+    border-radius: 5px;
+    border: 2px solid brown;
+    box-shadow: 0 0 5px black;
+    margin: 30px;
+    color: white;
+    text-shadow: 0 0 5px black;
+    display: inline-block;
+    font-size: 20pt;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    right: 20px;
+    top:20px;
+    z-index: 1;
+    transition: all 0.3s;
+}
+
+.goto-btn:hover{
+    background-color: rgb(36, 0, 0);
 }

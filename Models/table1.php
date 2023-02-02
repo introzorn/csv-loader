@@ -1,5 +1,7 @@
 <?php
 
+// Не изменяйте этот файл
+
 namespace App\Models;
 use App;
 use App\Model as M;
@@ -12,9 +14,12 @@ class table1 extends App\Model{
     
         $this->TABLE = [
         'id' => 'int(11) NOT NULL AUTO_INCREMENT',
-        'name' => 'char(255) NOT NULL',
-        'text' => 'text(1080) NOT NULL',
+        'csv_file_id' => 'int(11) NOT NULL',
+        //#colums
+        // 'text' => 'text(1080) NOT NULL',
         'PRIMARY KEY'=>'id',
+        'FOREIGN KEY'=>'csv_file_id',
+        'REFERENCES'=>'csv_files(id)',
         'CHARSET'=>'utf8'];
     }
 
