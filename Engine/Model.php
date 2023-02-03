@@ -188,6 +188,23 @@ class Model
         }
     }
 
+    public function addSQL($array){
+          try {
+            $keys = array_keys($array);
+            $keys_var = join("`,`", $keys);
+            $keys_val = join(", ", array_map(function($v){return Model::$connection->quote($v);},array_values($array)));
+           // self::$connection->exec("SET NAMES ".$this->CHARSET.$this->ifCOLLATE.';');
+             $req = "INSERT INTO " . $this->DB_TABLE . " (`" . $keys_var . "`) VALUES (" . $keys_val . ")";
+             return $req;
+            // $ret = $req->execute($array);
+           
+        } catch (PDOEX $err) {
+
+            return false;
+        }
+    }
+
+
     public function edit($id, $array) //изменение поля, возвращает массив поля с id или фалсе
     {
         try {

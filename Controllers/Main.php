@@ -16,10 +16,22 @@ use Exception;
 class Main
 {
 
+    /**
+     * Главная страница
+     * 
+     * 
+     * @param Query $Request
+     * @param array $dat
+     * 
+     * @return [type]
+     */
     function Index(Query $Request, $dat = [])
     {
         $data = Lang::LOAD("index");
         $galls = (new csv_files)->orderBy("id","DESC")->get(10);
+
+
+    
         $data = array_merge($data, $dat);
         $data['lust_10']="";
         foreach ($galls  as $key => $value) {
@@ -31,22 +43,40 @@ class Main
     }
 
 
+    /**
+     * Процедура отвечающая за загрузку файлов
+     * 
+     * @param Query $Request
+     * 
+     * @return [type]
+     */
     function Put(Query $Request)
     {
         if (sizeof($_FILES) != 1 || $_FILES["file"]["type"] != "application/vnd.ms-excel" || $_FILES["file"]["size"] > 1048576) {
-            $data['dw_error'] = "Ошибка загрузки файлов";
+            $data['dw_error'] = "<b style=\"color:red\">Ошибка загрузки файлов</b>";
             return $this->Index($Request, $data);
         }
 
         $allcsv = new csv_files();
         $rt = $allcsv->addCSV($_FILES["file"]);
+        
         if ($rt !== false) {
             Router::Redirect("csv_" . $rt['slug']);
         }
+        $data['dw_error'] = "<b style=\"color:red\">Неизвестный формат файла</b>";
+        return $this->Index($Request, $data);
     }
 
 
 
+    /**
+     * Процедура отвечающая за выгрузку файла csv
+     * 
+     * 
+     * @param Query $Request
+     * 
+     * @return [type]
+     */
     function Download(Query $Request)
     {
         try {
@@ -89,6 +119,13 @@ class Main
 
 
 
+    /**
+     * Процедура отвечающая за просмотр таблиц
+     * 
+     * @param Query $Request
+     * 
+     * @return [type]
+     */
     function Show(Query $Request)
     {
         $data = Lang::LOAD("index");

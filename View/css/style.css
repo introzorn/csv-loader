@@ -87,7 +87,7 @@ main {
 
 .download-button {
     padding: 10px 30px;
-    background-color: crimson;
+    background-color: rgb(255, 0, 51);
     border-radius: 5px;
     border: 2px solid brown;
     box-shadow: 0 0 5px black;
@@ -98,7 +98,15 @@ main {
     font-size: 20pt;
     margin-left: auto;
     margin-right: auto;
+    transition: all 0.3s;
 }
+
+.download-button:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.438);
+    position: relative;
+}
+
 
 .download-button svg {
     float: left;
@@ -140,20 +148,22 @@ main {
 
 .csv-files-vkladka{
     text-decoration: none;
-    background-color: rgb(255, 255, 255) ;
+    background-color: rgb(255, 255, 255);
     transition: all 0.3s;
-    color:rgb(85, 0, 0);
-    display:block;
-    margin:20px 50px;
-    padding:10px ;
-    border-radius: 10px;
+    color: rgb(85, 0, 0);
+    display: block;
+    margin: 1px 1px;
+    padding: 40px 49px;
+    border-radius: 1px;
+    
 
 }
 .csv-files-vkladka:hover{
     
-    background-color: rgb(255, 0, 0) ;
+    background-color: rgb(95, 95, 95) ;
     color:rgb(255, 255, 255);
-    transform: scale(1.1);
+    
+    transform: perspective(500px) rotateY(-2deg) rotateZ(-2deg) rotateX(-10deg)  scale(1.1);;
 }
 
 
@@ -202,7 +212,7 @@ main {
 
 
 .csvfile-grid {
-
+    background-color: black;
     overflow-x: visible;
 
     padding: 0px;
@@ -221,7 +231,7 @@ main {
     border-radius: 5px;
     border-collapse: collapse;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
    
 }
 

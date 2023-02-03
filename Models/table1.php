@@ -18,8 +18,6 @@ class table1 extends App\Model{
         //#colums
         // 'text' => 'text(1080) NOT NULL',
         'PRIMARY KEY'=>'id',
-        'FOREIGN KEY'=>'csv_file_id',
-        'REFERENCES'=>'csv_files(id)',
         'CHARSET'=>'utf8'];
     }
 

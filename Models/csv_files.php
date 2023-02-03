@@ -44,18 +44,51 @@ class csv_files extends App\Model
 
         $restructedCSV = $scv->restructCSV();
 
+     
+
         $rt = $this->UploadCSVtoDB($restructedCSV, $id, $scv->GridKeys);
-        unlink($restructedCSV);
+
 
         //альтернативный способ импорта 
+
+         //$rt = false;
+   //$k=microtime(true);
         if ($rt === false) {
-            $scv->parse(function ($csv_asoc, $csv_data) use ($model, $id) {
-                $csv_asoc['csv_file_id'] = $id;
-                $idd = $model->add($csv_asoc);
-            });
+
+            $sql = "";
+            $iter = 0;
+
+
+            $rt = $scv->parseTemp(
+                function ($csv_asoc, $end) use ($id, &$model, &$sql, &$iter) {
+                
+        
+                    if (sizeof($csv_asoc) > 0) {
+                        $csv_asoc['csv_file_id'] = $id;
+
+                        $sql .= $model->addSQL($csv_asoc) . ";\r\n";
+                        $iter++;
+                    }
+
+                    if ($end === true) {
+                        $iter = 200;
+                    }
+
+                    if ($iter >= 200) {
+                        $model->query($sql . ";");
+
+                        $iter = 0;
+                        $sql = "";
+                        unset($sql);
+                    }
+                },
+                $restructedCSV
+            );
         }
 
+        unlink($restructedCSV);
         $scv->close();
+//echo(microtime(true)-$k);die;
 
         return ["slug" => dechex($id)];
     }
@@ -75,7 +108,6 @@ class csv_files extends App\Model
         }
         $model = str_replace(["class table1", "//#colums", "<?php"], ["class " . $modelName, $mak, ""], $model);
 
-        //die("<pre> $model</pre>");
         eval($model);
 
         $class = "App\\Models\\" . $modelName;
@@ -151,7 +183,6 @@ class csv_files extends App\Model
                 }
                 array_map($callback, $rows);
                 $from += $quantity + 1;
-
             }
         }
 

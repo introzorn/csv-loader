@@ -50,7 +50,7 @@ anim();
 function draw() {
 
 
-if(window.scrollY>window.innerHeight+100){ return}
+if(!!document.querySelector(".csvfile-grid") && window.scrollY>window.innerHeight+100){ return}
 
 	var w  = window.innerWidth;
 var h  = window.innerHeight;
